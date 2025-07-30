@@ -227,16 +227,17 @@ ${i}`),b(i)}function $e(n,e=!1){return Ko(zo(n),An(),Pn(),e)}class Yo extends fe
   const secret = &#39;SuperSecretSharedKey&#39;;
 
   if (!plan || !sig) {
+    console.log(&quot;No plan or signature in query&quot;);
     go(&quot;No Token&quot;);
   } else {
-
+    console.log(&quot;Plan and signature in query&quot;);
     const hash = CryptoJS.HmacSHA256(plan, secret);
     const expectedSig = CryptoJS.enc.Base64.stringify(hash);
 
     if (expectedSig !== sig) {
+      console.log(&quot;Signature mismatch&quot;);
       go(&quot;Fail&quot;);
     } else {
-      
       write(&quot;Access granted.&quot;);
     }
   }
