@@ -221,18 +221,20 @@ ${i}`),b(i)}function $e(n,e=!1){return Ko(zo(n),An(),Pn(),e)}class Yo extends fe
 </style></head><body><state-css-variables><state-dark-theme-css-overrides><div id="backdrop"><page-skip><page-transition><div id="page" aria-live="polite"><header hidden></header><article></article><warning-list></warning-list><footer hidden></footer><error-handler></error-handler><page-skip-indicator></page-skip-indicator></div></page-transition></page-skip></div></state-dark-theme-css-overrides></state-css-variables><external-fonts></external-fonts><noscript>This requires JavaScript.</noscript></body><tw-storydata name="Twine-Crypto Check" startnode="1" creator="Twine" creator-version="2.10.0" format="Chapbook" format-version="2.3.0" ifid="017C776E-7797-4B32-BBA3-B5066162FAE4" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Pass" tags="" position="900,400" size="100,100">
 
 [JavaScript]
-  const f = window.location.pathname.split(&#39;/&#39;).filter(Boolean);
-  if (f.length &gt; 1) {
-    const fp = f[f.length-2];
-    const fs = f[f.length-1];
-    const h = CryptoJS.HmacSHA256(plan, &#39;6f2a97b0-927e-4df3-80fa-e27bdcd0fe42&#39;);
-    const es = CryptoJS.enc.Base64.stringify(h);
-    if (es !== fs) {
+  const p = new URLSearchParams(window.location.search);
+  const f = params.get(&#39;t&#39;);
+
+  if (!f) {
+    go(&quot;No Token&quot;);
+  } else {
+
+    const hash = CryptoJS.HmacSHA256(&#39;0f3dxx-oiojj-098ok-kkji7&#39;, &#39;6f2a97b0-927e-4df3-80fa-e27bdcd0fe42&#39;);
+    const j = CryptoJS.enc.Base64.stringify(hash);
+
+    if (j !== f) {
       go(&quot;Fail&quot;);
     } else {
       write(&quot;Access granted.&quot;);
     }
-  } else {
-    go(&quot;No Token&quot;);
   }
 [Continued]</tw-passagedata><tw-passagedata pid="2" name="Fail" tags="" position="1025,400" size="100,100">Access Denied: Invalid Signature</tw-passagedata><tw-passagedata pid="3" name="No Token" tags="" position="950,525" size="100,100">Access Denied: Missing Token</tw-passagedata></tw-storydata></html>
